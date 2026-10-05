@@ -1,0 +1,434 @@
+{
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "cv_folds": 3
+  },
+  "current_project": {
+    "n_train": 1176,
+    "n_test": 294,
+    "dropped_from_X": [
+      "EmployeeNumber",
+      "EmployeeCount",
+      "Over18",
+      "StandardHours",
+      "EngagementScore",
+      "EngagementLevel",
+      "OverallSatisfactionIndex",
+      "JobInvolvement",
+      "JobSatisfaction",
+      "EnvironmentSatisfaction",
+      "RelationshipSatisfaction",
+      "WorkLifeBalance"
+    ],
+    "train_class_counts": {
+      "level": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "count": [
+        80,
+        866,
+        230
+      ],
+      "percent": [
+        6.8,
+        73.64,
+        19.56
+      ],
+      "total": 1176
+    },
+    "test_class_counts": {
+      "level": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "count": [
+        20,
+        217,
+        57
+      ],
+      "percent": [
+        6.8,
+        73.81,
+        19.39
+      ],
+      "total": 294
+    },
+    "majority_baseline": {
+      "accuracy": 0.7380952380952381,
+      "f1_macro": 0.2831050228310502,
+      "balanced_accuracy": 0.3333333333333333,
+      "majority_class": "Medium"
+    },
+    "decision_tree_balanced": {
+      "accuracy": 0.6530612244897959,
+      "f1_macro": 0.3872160656522188,
+      "balanced_accuracy": 0.38336297733581265
+    },
+    "random_forest_balanced": {
+      "accuracy": 0.7380952380952381,
+      "f1_macro": 0.2831050228310502,
+      "balanced_accuracy": 0.3333333333333333
+    },
+    "dt_pred_distribution": {
+      "Low": 19,
+      "Medium": 229,
+      "High": 46
+    },
+    "rf_pred_distribution": {
+      "Low": 0,
+      "Medium": 294,
+      "High": 0
+    },
+    "note": "class_weight='balanced' makes the tree trade Medium accuracy for rare-class recall. The untuned Random Forest on this split predicted only Medium, matching majority accuracy. After dropping the five survey items that define the label, remaining HR fields are a weak signal."
+  },
+  "experiment_1_leakage_safe": {
+    "features": "HR fields only; five survey items, score, level, OverallSatisfactionIndex, IDs/constants excluded",
+    "target": "project bins 1.00-2.00 Low, 2.01-3.00 Medium, 3.01-4.00 High",
+    "majority_baseline": {
+      "accuracy": 0.7380952380952381,
+      "f1_macro": 0.2831050228310502,
+      "balanced_accuracy": 0.3333333333333333,
+      "majority_class": "Medium"
+    },
+    "models": [
+      {
+        "model": "Logistic Regression (tuned)",
+        "cv_macro_f1": 0.3174830855254348,
+        "best_params": {
+          "model__class_weight": "balanced",
+          "model__C": 5.0
+        },
+        "accuracy": 0.3741496598639456,
+        "f1_macro": 0.3128465220476073,
+        "balanced_accuracy": 0.3978117336351632
+      },
+      {
+        "model": "Random Forest (tuned)",
+        "cv_macro_f1": 0.3775621932064486,
+        "best_params": {
+          "model__n_estimators": 150,
+          "model__min_samples_leaf": 8,
+          "model__max_features": "sqrt",
+          "model__max_depth": 6,
+          "model__class_weight": "balanced_subsample"
+        },
+        "accuracy": 0.5680272108843537,
+        "f1_macro": 0.3456701476342676,
+        "balanced_accuracy": 0.3471555232166437
+      },
+      {
+        "model": "Extra Trees (tuned)",
+        "cv_macro_f1": 0.3664593457047162,
+        "best_params": {
+          "model__n_estimators": 150,
+          "model__min_samples_leaf": 8,
+          "model__max_depth": 16,
+          "model__class_weight": "balanced"
+        },
+        "accuracy": 0.5,
+        "f1_macro": 0.35004955327535975,
+        "balanced_accuracy": 0.3877745438865982
+      },
+      {
+        "model": "Gradient Boosting (tuned)",
+        "cv_macro_f1": 0.33637924295765026,
+        "best_params": {
+          "model__subsample": 0.7,
+          "model__n_estimators": 150,
+          "model__max_depth": 3,
+          "model__learning_rate": 0.1
+        },
+        "accuracy": 0.7108843537414966,
+        "f1_macro": 0.28775,
+        "balanced_accuracy": 0.32535640175708086
+      },
+      {
+        "model": "HistGradientBoosting (tuned)",
+        "cv_macro_f1": 0.3445106175356758,
+        "best_params": {
+          "model__max_iter": 250,
+          "model__max_depth": 3,
+          "model__learning_rate": 0.03,
+          "model__l2_regularization": 1.0,
+          "model__class_weight": "balanced"
+        },
+        "accuracy": 0.4931972789115646,
+        "f1_macro": 0.3495045947828254,
+        "balanced_accuracy": 0.37380548144554937
+      },
+      {
+        "model": "SVM (tuned)",
+        "cv_macro_f1": 0.3297816995305361,
+        "best_params": {
+          "model__gamma": 0.03,
+          "model__class_weight": "balanced",
+          "model__C": 2.0
+        },
+        "accuracy": 0.5068027210884354,
+        "f1_macro": 0.3525848819458491,
+        "balanced_accuracy": 0.371326164874552
+      }
+    ],
+    "best_by_macro_f1": {
+      "model": "SVM (tuned)",
+      "cv_macro_f1": 0.3297816995305361,
+      "best_params": {
+        "model__gamma": 0.03,
+        "model__class_weight": "balanced",
+        "model__C": 2.0
+      },
+      "accuracy": 0.5068027210884354,
+      "f1_macro": 0.3525848819458491,
+      "balanced_accuracy": 0.371326164874552
+    }
+  },
+  "experiment_2_engagement_indicators": {
+    "label": "Classification using the same engagement-related indicators from which the project-defined label was constructed.",
+    "features": "five survey items plus other HR fields; score, level, OverallSatisfactionIndex, IDs/constants still excluded",
+    "dropped": [
+      "EmployeeNumber",
+      "EmployeeCount",
+      "Over18",
+      "StandardHours",
+      "EngagementScore",
+      "EngagementLevel",
+      "OverallSatisfactionIndex"
+    ],
+    "majority_baseline": {
+      "accuracy": 0.7380952380952381,
+      "f1_macro": 0.2831050228310502,
+      "balanced_accuracy": 0.3333333333333333,
+      "majority_class": "Medium"
+    },
+    "models": [
+      {
+        "model": "Logistic Regression (tuned)",
+        "cv_macro_f1": 0.976612805244077,
+        "best_params": {
+          "model__class_weight": null,
+          "model__C": 5.0
+        },
+        "accuracy": 0.9897959183673469,
+        "f1_macro": 0.9706846434535222,
+        "balanced_accuracy": 0.9500000000000001
+      },
+      {
+        "model": "Random Forest (tuned)",
+        "cv_macro_f1": 0.7841257652852779,
+        "best_params": {
+          "model__n_estimators": 500,
+          "model__min_samples_leaf": 8,
+          "model__max_features": 0.4,
+          "model__max_depth": null,
+          "model__class_weight": "balanced_subsample"
+        },
+        "accuracy": 0.8945578231292517,
+        "f1_macro": 0.8205392145972253,
+        "balanced_accuracy": 0.8119721346376694
+      },
+      {
+        "model": "Extra Trees (tuned)",
+        "cv_macro_f1": 0.7584913378422177,
+        "best_params": {
+          "model__n_estimators": 150,
+          "model__min_samples_leaf": 1,
+          "model__max_depth": 6,
+          "model__class_weight": "balanced"
+        },
+        "accuracy": 0.8129251700680272,
+        "f1_macro": 0.7468941774211698,
+        "balanced_accuracy": 0.8614991780526585
+      },
+      {
+        "model": "Gradient Boosting (tuned)",
+        "cv_macro_f1": 0.7946887871639986,
+        "best_params": {
+          "model__subsample": 0.7,
+          "model__n_estimators": 250,
+          "model__max_depth": 4,
+          "model__learning_rate": 0.1
+        },
+        "accuracy": 0.9421768707482994,
+        "f1_macro": 0.8427607617531586,
+        "balanced_accuracy": 0.7858908022745035
+      },
+      {
+        "model": "HistGradientBoosting (tuned)",
+        "cv_macro_f1": 0.8538287551293401,
+        "best_params": {
+          "model__max_iter": 400,
+          "model__max_depth": 3,
+          "model__learning_rate": 0.03,
+          "model__l2_regularization": 0.1,
+          "model__class_weight": "balanced"
+        },
+        "accuracy": 0.9727891156462585,
+        "f1_macro": 0.9424249118498769,
+        "balanced_accuracy": 0.9380076535424583
+      },
+      {
+        "model": "SVM (tuned)",
+        "cv_macro_f1": 0.8717359375032956,
+        "best_params": {
+          "model__gamma": 0.03,
+          "model__class_weight": "balanced",
+          "model__C": 2.0
+        },
+        "accuracy": 0.9523809523809523,
+        "f1_macro": 0.8983970136144048,
+        "balanced_accuracy": 0.859645080443043
+      }
+    ],
+    "best_by_macro_f1": {
+      "model": "Logistic Regression (tuned)",
+      "cv_macro_f1": 0.976612805244077,
+      "best_params": {
+        "model__class_weight": null,
+        "model__C": 5.0
+      },
+      "accuracy": 0.9897959183673469,
+      "f1_macro": 0.9706846434535222,
+      "balanced_accuracy": 0.9500000000000001
+    },
+    "oracle_reconstruction_same_formula": {
+      "model": "Oracle: re-apply mean + cut on the five survey items (not a trained classifier)",
+      "accuracy": 1.0,
+      "f1_macro": 1.0,
+      "balanced_accuracy": 1.0
+    },
+    "five_items_only": {
+      "model": "Decision Tree (five survey items only)",
+      "cv_macro_f1": 0.8830093522777883,
+      "best_params": {
+        "model__min_samples_leaf": 1,
+        "model__max_depth": null
+      },
+      "accuracy": 0.9625850340136054,
+      "f1_macro": 0.9244465486554967,
+      "balanced_accuracy": 0.9139569353491256
+    }
+  },
+  "experiment_3_target_sensitivity": {
+    "current_thresholds": "1.00-2.00 Low, 2.01-3.00 Medium, 3.01-4.00 High",
+    "current_class_counts_full_table": {
+      "level": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "count": [
+        100,
+        1083,
+        287
+      ],
+      "percent": [
+        6.8,
+        73.67,
+        19.52
+      ],
+      "total": 1470
+    },
+    "score_min": 1.2,
+    "score_max": 4.0,
+    "score_mean": 2.730748299319728,
+    "score_median": 2.8,
+    "histogram": {
+      "bin_left": [
+        1.0,
+        1.2,
+        1.4,
+        1.5999999999999999,
+        1.7999999999999998,
+        1.9999999999999998,
+        2.1999999999999997,
+        2.3999999999999995,
+        2.5999999999999996,
+        2.8,
+        2.9999999999999996,
+        3.1999999999999993,
+        3.3999999999999995,
+        3.5999999999999996,
+        3.7999999999999994
+      ],
+      "bin_right": [
+        1.2,
+        1.4,
+        1.5999999999999999,
+        1.7999999999999998,
+        1.9999999999999998,
+        2.1999999999999997,
+        2.3999999999999995,
+        2.5999999999999996,
+        2.8,
+        2.9999999999999996,
+        3.1999999999999993,
+        3.3999999999999995,
+        3.5999999999999996,
+        3.7999999999999994,
+        3.999999999999999
+      ],
+      "count": [
+        0,
+        2,
+        3,
+        13,
+        29,
+        53,
+        126,
+        206,
+        243,
+        266,
+        242,
+        156,
+        89,
+        36,
+        5
+      ]
+    },
+    "tertile_cutpoints_from_training_scores": {
+      "train_q33": 2.6,
+      "train_q66": 3.0
+    },
+    "tertile_class_counts_full_table": {
+      "level": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "count": [
+        675,
+        508,
+        287
+      ],
+      "percent": [
+        45.92,
+        34.56,
+        19.52
+      ],
+      "total": 1470
+    },
+    "majority_baseline_tertile_test": {
+      "accuracy": 0.45918367346938777,
+      "f1_macro": 0.2097902097902098,
+      "balanced_accuracy": 0.3333333333333333,
+      "majority_class": "Low"
+    },
+    "random_forest_tertile_leakage_safe": {
+      "model": "Random Forest (tertile labels, leakage-safe X)",
+      "cv_macro_f1": 0.34505495282444026,
+      "best_params": {
+        "model__n_estimators": 400,
+        "model__min_samples_leaf": 4,
+        "model__max_depth": null,
+        "model__class_weight": "balanced"
+      },
+      "accuracy": 0.4013605442176871,
+      "f1_macro": 0.3323134000444175,
+      "balanced_accuracy": 0.34014065665252463
+    }
+  }
+}

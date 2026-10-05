@@ -1,0 +1,23 @@
+{
+  "majority_test_accuracy": 0.7380952380952381,
+  "majority_test_macro_f1": 0.2831050228310502,
+  "best_cv_accuracy_model": "Random Forest (opt accuracy)",
+  "best_cv_accuracy_cv_mean": 0.7363974035340786,
+  "best_cv_accuracy_test_accuracy": 0.7380952380952381,
+  "best_cv_accuracy_test_macro_f1": 0.2831050228310502,
+  "best_cv_macro_f1_model": "Decision Tree (opt f1_macro)",
+  "best_cv_macro_f1_cv_mean": 0.37858395065199907,
+  "best_cv_macro_f1_test_accuracy": 0.6190476190476191,
+  "best_cv_macro_f1_test_macro_f1": 0.3418650793650793,
+  "highest_observed_test_accuracy_model": "Logistic Regression (opt accuracy)",
+  "highest_observed_test_accuracy": 0.7380952380952381,
+  "highest_observed_test_macro_f1_model": "Random Forest (opt f1_macro)",
+  "highest_observed_test_macro_f1": 0.3740789553112626,
+  "beats_majority_baseline": false,
+  "reached_80": false,
+  "reached_85": false,
+  "reached_90": false,
+  "replaced_streamlit_model": false,
+  "streamlit_recommendation": "Keep current Streamlit Decision Tree (untuned, class_weight=balanced)",
+  "dummy_like_accuracy_winner": true
+}

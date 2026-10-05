@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Environment secrets
+.env
+.env.*
+
+# Keep the models/ folder in git, ignore bulky ensembles, keep the final demo pipeline.
+models/*.pkl
+models/*.joblib
+!models/final_model.joblib
+!models/preprocessor.joblib
+!models/decision_tree.joblib
+!models/engagement_clustering_pipeline.joblib
+models/survey/*.joblib
+models/optimization/*.joblib
+
+# Local reports that may be regenerated
+reports/*.html
+reports/*.pdf
+
+# Local data files that are not part of the repo yet
+data/*.csv
+data/*.xlsx
+data/*.xls
+!data/.gitkeep
+!data/IBM_HR_Attrition_Enhanced.csv
+data/survey/*.csv
+!data/survey/employee_engagement_survey_template.csv

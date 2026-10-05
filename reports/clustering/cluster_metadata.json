@@ -1,0 +1,78 @@
+{
+  "k": 2,
+  "k_selection_reason": "K=2 selected from K=2\u20136. Silhouette=0.1750 (highest among solutions with smallest cluster \u2265 8% of rows). Davies-Bouldin=2.1551 used as tie-breaker among silhouette values within 0.01 of the best. This is an internal clustering criterion, not a claim that K is a true number of psychological types.",
+  "silhouette": 0.17504083545049082,
+  "davies_bouldin": 2.1551496567341557,
+  "calinski_harabasz": 288.0090733620576,
+  "inertia": 20087.101198384342,
+  "n_employees": 1470,
+  "features_used": [
+    "JobInvolvement",
+    "JobSatisfaction",
+    "EnvironmentSatisfaction",
+    "RelationshipSatisfaction",
+    "WorkLifeBalance",
+    "OverTime",
+    "Age",
+    "MonthlyIncome",
+    "JobLevel",
+    "YearsAtCompany",
+    "YearsInCurrentRole",
+    "YearsSinceLastPromotion",
+    "YearsWithCurrManager",
+    "TrainingTimesLastYear",
+    "JobRole",
+    "BusinessTravel",
+    "MaritalStatus",
+    "DistanceFromHome"
+  ],
+  "features_missing_from_candidates": [],
+  "numeric_features": [
+    "JobInvolvement",
+    "JobSatisfaction",
+    "EnvironmentSatisfaction",
+    "RelationshipSatisfaction",
+    "WorkLifeBalance",
+    "Age",
+    "MonthlyIncome",
+    "JobLevel",
+    "YearsAtCompany",
+    "YearsInCurrentRole",
+    "YearsSinceLastPromotion",
+    "YearsWithCurrManager",
+    "TrainingTimesLastYear",
+    "DistanceFromHome"
+  ],
+  "categorical_features": [
+    "OverTime",
+    "JobRole",
+    "BusinessTravel",
+    "MaritalStatus"
+  ],
+  "forbidden_excluded": [
+    "EngagementScore",
+    "EngagementLevel",
+    "OverallSatisfactionIndex",
+    "EmployeeNumber",
+    "EmployeeCount",
+    "Over18",
+    "StandardHours"
+  ],
+  "missing_value_cells": 0,
+  "duplicate_rows": 0,
+  "names": {
+    "0": "Higher Pay / Longer Tenure Profile",
+    "1": "Lower Pay / Shorter Tenure Profile"
+  },
+  "descriptions": {
+    "0": "499 employees (34.0% of the table). Mean of the five workplace satisfaction items = 2.75 (table mean 2.73). Overtime 26.7% (table 28.3%). Mean monthly income 10609; mean years at company 12.8. These are observed group averages, not a clinical engagement type.",
+    "1": "971 employees (66.0% of the table). Mean of the five workplace satisfaction items = 2.72 (table mean 2.73). Overtime 29.1% (table 28.3%). Mean monthly income 4393; mean years at company 4.1. These are observed group averages, not a clinical engagement type."
+  },
+  "pca_explained_variance_ratio": [
+    0.24365617757440847,
+    0.08779271333499489
+  ],
+  "dbscan_typical_10nn_distance": 3.1832596750795963,
+  "no_supervised_target": true,
+  "disclaimer": "Clusters are data-driven employee engagement profiles based on observed HR and satisfaction characteristics. They are not scientifically validated psychological engagement categories."
+}

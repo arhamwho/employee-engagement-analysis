@@ -1,0 +1,8 @@
+Experiment,Target Definition,Features Used,Accuracy,Macro F1,Balanced Accuracy,Majority Baseline,Leakage Risk
+"Current project (Decision Tree, no HPO)",Project bins on mean of five 1-4 items,Leakage-safe HR fields only,0.6530612244897959,0.3872160656522188,0.38336297733581265,0.7380952380952381,Controlled: five items excluded
+Current project majority baseline,Project bins,Predict training majority class,0.7380952380952381,0.2831050228310502,0.3333333333333333,0.7380952380952381,None (baseline)
+Experiment 1 best by macro F1: SVM (tuned),Project bins,Leakage-safe HR fields only; 3-fold stratified CV HPO on train,0.5068027210884354,0.3525848819458491,0.371326164874552,0.7380952380952381,Controlled: five items excluded
+Experiment 2 best by macro F1: Logistic Regression (tuned),Project bins,Five survey items + other HR fields,0.9897959183673469,0.9706846434535222,0.9500000000000001,0.7380952380952381,High: predictors include label components
+"Experiment 2 oracle (formula, not trained)",Project bins,Re-apply mean + cut on the five survey items,1.0,1.0,1.0,0.7380952380952381,Definitional: this is the label rule
+Experiment 2: Decision Tree on five items only,Project bins,Only the five survey items,0.9625850340136054,0.9244465486554967,0.9139569353491256,0.7380952380952381,High: predictors are the label components
+Experiment 3: RF on train-quantile tertiles,Tertiles of EngagementScore using training quantiles only,Leakage-safe HR fields only,0.4013605442176871,0.3323134000444175,0.34014065665252463,0.45918367346938777,Controlled: five items excluded; bins from train scores
